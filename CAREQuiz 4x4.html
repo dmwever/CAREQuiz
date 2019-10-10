@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="Header.css">
+<style>
+
+html {
+margin: 0;
+}
+
+ul {
+  margin: 16px;
+  padding: 5px;
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+  padding: 0px;
+  display: inline;
+}
+
+li a {
+  border-style: solid;
+  border-bottom-width: 5px;
+  border-top-width: 5px;
+  border-right-width: 3px;
+  border-left-width: 3px;
+  border-color: black;
+  color: rgb(225,168,115);
+  padding: 16px;
+  text-decoration: none;
+  text-shadow: 2px 2px #000000;
+  font: 20px impact;
+  background-color: rgb(19,34,161);
+}
+
+body {
+  background-color: rgb(100,100,100);
+}
+
+.menu-container{
+    padding-top: 0px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	width: 70vw;
+	Height: 70vh;
+    border: 3px solid #000;
+}
+
+.action-container {
+	position: relative;
+	display: inline-block;
+	width: 17.50vw;
+	height: 13.55vh;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.button1 {
+	position: absolute;
+	border: none;
+	width: 17.50vw;
+	height: 14.05vh;
+	color: rgb(225,225,225);
+	font: 20px impact;
+	text-decoration: none;
+	text-shadow: 2px 2px #000000;
+	background-image: radial-gradient(rgb(19,34,161),rgb(19,34,100));
+	border-left: 2px solid #000;
+	border-right: 2px solid #000;
+	border-bottom: 8px solid #000;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	white-space: normal;
+}
+
+.button2 {
+	position: absolute;
+	border: none;
+	width: 17.50vw;
+	height: 14.05vh;
+	color: rgb(225,168,115);
+	font: 40px impact;
+	text-decoration: none;
+	text-shadow: 2px 2px #000000;
+	background-image: radial-gradient(rgb(19,34,161),rgb(19,34,100));
+	border-left: 2px solid #000;
+	border-right: 2px solid #000;
+	border-bottom: 4px solid #000;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+}
+
+.inputScreen {	/*The primary popup for text inputs */
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(19,34,161);
+	background-image: radial-gradient(rgb(19,34,161),rgb(19,34,100));
+}
+
+.input-content {
+	background-color:none;
+	text-align: center;
+	margin: 15% auto;
+	width: 100%;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#txt {
+	width: 80%;
+	padding: 20px 20px;
+	height: 200px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 2px solid grey;
+	border-radius: 4px;
+	text-align: center;
+	background-color: transparent;
+	font: 20px cursive, sans-serif;
+	color: white;
+	resize: none;
+}
+
+#displayTxt {
+	font: 20px cursive, sans-serif;
+	color: white;
+}
+
+</style>
+<script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+</head>
+
+<body>
+
+<ul>
+  <li><a href="#" onclick="newGame(true)">Create Game</a></li><!--
+  --><li><a href="#" onclick="loadGame()">Load Game</a></li><!--
+  --><li><a href="#" onclick="saveGame()">Save Game</a></li><!--
+  --><li><a href="#" onclick="playGame()">Start Game</a></li>
+</ul>
+
+<div id="inputScr" class="inputScreen">
+	<div class="input-content">
+		<textarea value="" id="txt"></textarea>
+	</div>
+</div>
+
+<div id="displayScr" class="inputScreen">
+	<div class = "input-content">
+		<p id="displayTxt"></p>
+	</div>
+</div>
+
+<div class="menu-container" id="mainGame">
+    <div class="action-container">
+         <input type="button"
+		 class="button1"
+		 id="Cat1"
+		 onclick="openInput(1)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button1"
+		 id="Cat2"
+		 onclick="openInput(2)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button1"
+		 id="Cat3"
+		 onclick="openInput(3)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button1"
+		 id="Cat4"
+		 onclick="openInput(4)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat1100"
+		 onclick="openInput(1100)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat1200"
+		 onclick="openInput(1200)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat1300"
+		 onclick="openInput(1300)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat1400"
+		 onclick="openInput(1400)">
+    </div><!--
+	--><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat2100"
+		 onclick="openInput(2100)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat2200"
+		 onclick="openInput(2200)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat2300"
+		 onclick="openInput(2300)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat2400"
+		 onclick="openInput(2400)">
+    </div><!--
+	--><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat3100"
+		 onclick="openInput(3100)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat3200"
+		 onclick="openInput(3200)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat3300"
+		 onclick="openInput(3300)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat3400"
+		 onclick="openInput(3400)">
+    </div><!--
+	--><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat4100"
+		 onclick="openInput(4100)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat4200"
+		 onclick="openInput(4200)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat4300"
+		 onclick="openInput(4300)">
+    </div><!--
+    --><div class="action-container">
+         <input type="button"
+		 class="button2"
+		 id="Cat4400"
+		 onclick="openInput(4400)">
+    </div>
+</div>
+
+<script>
+
+var CatArray = [], i, j, isPlaying = false, saveTitle;
+var QuestArray = [[],[],[],[]];
+
+var inputGet = document.getElementById("inputScr");
+var displayGet = document.getElementById("displayScr");
+var txtReader = document.getElementById("txt");
+var txtNum = 0;
+
+function newGame(isNew) {
+	CatArray = [];
+	QuestArray = [[],[],[],[]];
+	for (i = 1; i <= 4; i++) {
+		var newCar = new Cat("Category " + " " + i);
+		/*QuestArray.push([]);*/
+		CatArray.push(newCar);
+		document.getElementById("Cat" + i).value = CatArray[i-1].getName();
+		for(j = 1; j <= 4; j++) {
+			var newQuest = new Cat("New Question");
+			QuestArray[j - 1].push(newQuest);
+			var x = i * 1000, y = j * 100;
+			document.getElementById("Cat" + (x + y)).placeholder = QuestArray[j-1][i-1].getName();
+			document.getElementById("Cat" + (x + y)).value = "";
+		}
+	}
+	if (isNew == true) openInput(0);
+	isPlaying = false;
+}
+
+function Cat(name) {
+	this.name = name;
+	this.getName = function() {
+		return this.name;
+	}
+	this.setName = function(name) {
+		this.name = name;
+	}
+}
+
+function saveGame() {
+	if (CatArray[0] != null) {
+		var data = JSON.stringify([CatArray,QuestArray]);
+		console.log(data);
+		var blob = new Blob([data], {type: "text/plain;charset=utf-8"});
+		saveAs(blob, saveTitle);
+	}
+	else alert("Error: No Game Loaded!");
+}
+
+function loadGame() {
+	if (CatArray[0] == null) newGame(false);
+	var x = document.createElement("INPUT");
+	x.setAttribute("type", "file");
+	x.click();
+	x.addEventListener("change", handleFiles, false);
+}
+
+function handleFiles() {
+	var file = this.files[0];
+	file.text().then((text) => {
+		var temp = [];
+		temp = JSON.parse(text);
+		for (i = 0; i < 4; i++) CatArray[i].setName(temp[0][i].name);
+		for (i = 0; i < 4; i++)
+			for (j = 0; j < 4; j++)
+				QuestArray[i][j].setName(temp[1][i][j].name);
+				adjustCategories();
+	});
+
+}
+
+function adjustCategories() {
+	for (i = 0; i < 4; i++) document.getElementById("Cat" + (i + 1)).value = CatArray[i].getName();
+	for (i = 0; i < 4; i++)
+		for (j = 0; j < 4; j++) {
+			var x = (j + 1) * 100 + (i + 1) * 1000;
+			var y = (i + 1) * 100;
+			if (QuestArray[j][i].getName() != "New Question")
+				document.getElementById("Cat" + x).value = "$" + y;
+			else document.getElementById("Cat" + x).value = "";
+		}
+			
+}
+
+function playGame() {
+	if (CatArray[0] == null) alert("Error: No Game Loaded!");
+	else {
+		loop1:
+		for (i = 0; i < 4; i++) {
+			for (j = 0; j < 4; j++) {
+				if (QuestArray[j][i].getName() == "New Question") {
+					alert("Not all questions have values. Game not started.");
+					isPlaying = false;
+					break loop1;
+				}
+				else if (i == 3 && j == 3) {
+					alert("New Game Started");
+					isPlaying = true;
+				}
+			}
+		}
+	}
+}
+
+function openInput(buttonNum) {
+	txtNum = buttonNum;
+	if (isPlaying == true) {
+			if (txtNum > 4) {
+			displayGet.style.display = "block";
+			var x = Math.floor(buttonNum / 1000);
+			var y = (buttonNum % 1000) / 100;
+			document.getElementById("displayTxt").innerHTML = QuestArray[y-1][x-1].getName();
+		}
+	}
+	else {
+		inputGet.style.display = "block";
+		if (buttonNum == 0) document.getElementById("txt").value = "untitled.txt";
+		else if (buttonNum < 5) document.getElementById("txt").value = CatArray[buttonNum-1].getName();
+		else {
+			var x = Math.floor(buttonNum / 1000);
+			var y = (buttonNum % 1000) / 100;
+			document.getElementById("txt").value = QuestArray[y-1][x-1].getName();
+		}
+	}
+}
+
+window.onclick = function(event) {
+	if (event.target == inputGet || event.target == displayGet) {
+		inputGet.style.display = "none";
+		displayGet.style.display = "none";
+		if (isPlaying == false) {
+			if (txtNum == 0) saveTitle = document.getElementById("txt").value;
+			else if (txtNum < 5) {
+				document.getElementById("Cat" + txtNum).value = document.getElementById("txt").value;
+				CatArray[txtNum-1].setName(document.getElementById("txt").value);
+			}
+			else {
+				var x = Math.floor(txtNum / 1000);
+				var y = (txtNum % 1000) / 100;
+				document.getElementById("Cat" + txtNum).value = "$" + (x * 100);
+				QuestArray[y-1][x-1].setName(document.getElementById("txt").value);
+			}
+		}
+		else if (txtNum > 4) document.getElementById("Cat" + txtNum).value = "";
+	}
+}
+
+</script>
+
+</body>
+
+</html>

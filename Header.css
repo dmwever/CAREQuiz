@@ -1,0 +1,24 @@
+
+h2 {
+  color: white;
+  font: 25px impact;
+  margin: 0;
+}
+
+.new-game {
+  display: none;
+  position: absolute;
+  top: 65px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(100,100,100);
+}
+
+.new-game iframe {
+  display: block;
+  background: #000;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
